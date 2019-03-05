@@ -5,8 +5,8 @@
    Tutorial 10
    Case Problem 3
 
-   Author:  
-   Date:   
+   Author: Gabriel Hernandez
+    Date: 3/4/19   
    
    Filename: ah_report.js
    
@@ -27,13 +27,34 @@
       information for the donor
       
 */
+//calculates the total amount of the donations
+var donationTotal = 0;
+
+//calculate donation total
+donors.forEach(calcSum); 
+
+// Creates table with headers 
+var summaryTable = "<table> <tr><th>Donors</th><td>" + donors.length + "</td></tr> <tr><th>Total Donations</th><td>$ " + donationTotal.toLocaleString() + "</td></tr> </table>";
+
+// Displays table by inserting it into the HTML
+document.getElementById('donationSummary').innerHTML = summaryTable;
 
 
+// Making a table that filiters and displays the donors that donated more than $1000 
+// the following code filters the donors that donated more than $1000 then orders them in decending order using prebuilt functions
+var majorDonors = donors.filter(findMajorDonors);
+majorDonors.sort(donorSortDescending);
 
+// Creates the table for the recognized donors
+var donorTable = "<table> <caption>Major Donors</caption> <tr><th>Donation</th> <th>Donor ID</th> <th>Date</th><th>Name</th><th>Address</th> <th>Phone</th><th>E-mail</th></tr>";
 
+// creates the html table rows for the table
+majorDonors.forEach(writeDonorRow);
 
+donorTable += "</table>";
 
-
+// displays and inserts the html from the donorTable variable and inserts it into the html file.
+document.getElementById('donorTable').innerHTML = donorTable;
 
 
 
